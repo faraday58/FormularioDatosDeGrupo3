@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FormularioDatosDeGrupo3
 {
     class Alumno
     {
+        #region Atributos
         private string nombre;
         private string numeroCuenta;
         private string materia;
 
+        
+        #endregion
+
+
+        #region Propiedades
         public string Nombre { get => nombre;
             set
             {
@@ -33,15 +34,38 @@ namespace FormularioDatosDeGrupo3
             {
                 if( value == ""  )
                 {
-
+                    numeroCuenta=GenerarNumeroCuenta();
                 }
-                numeroCuenta = value;
+                else
+                {
+                    numeroCuenta = value;
+                }
+                
             }
         }
-        public string Materia { get => materia; set => materia = value; }
+        public string Materia {
+            get => materia;
+            set
+            {
+                if( value=="" )
+                {
+                    materia = "Técnicas de Programación";
+                }
+                else
+                {
+                    materia = value;
+                }
+                
+            }
+        }
+        #endregion
 
-
-
+        public Alumno(string nombre, string numeroCuenta, string materia)
+        {
+            Nombre = nombre;
+            NumeroCuenta = numeroCuenta;
+            Materia = materia;
+        }
 
         private string GenerarNumeroCuenta()
         {
